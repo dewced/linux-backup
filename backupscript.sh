@@ -78,5 +78,10 @@ echo 'Please select a valid type'
 fi
 
 echo 'Remote Backup Complete'
-clean_backup
+cleanlocaltempbackup
 #END
+
+cleanlocaltempbackup() {
+  rm -f ./$FILE
+  echo 'Local Backup Has Been Removed'
+}
