@@ -25,7 +25,7 @@ PORT="REMOTE SERVER PORT"
 #1. Loop elke map dat gebackupt moet worden 1 voor 1 af. Dus we starten MAP 1
 #2. ZIPPEN dit en zetten het in DIR
 #3. Trigger SFTP en upload.
-#4. Maak DIR map leeg
+#4. Maak DIR map leeg (doet hij dus al)
 #5. Herhaal stappen met volgende map die je moet backuppen
 
 # What do I need to backup? (TODO: Extend to multiple folders, allow to choose)
