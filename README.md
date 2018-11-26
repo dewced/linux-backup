@@ -6,10 +6,11 @@ What to backup:
 ## Apache
 
 - /var/www
-- /etc/apache2
-- databases , /usr/share/mysql
+- /etc/httpd
+- /var/lib/mysql
 
 ## Nginx
 
-- /var/www
-- /etc/nginx
+- /usr/share/nginx
+- /etc/httpd
+- /var/lib/mysql
