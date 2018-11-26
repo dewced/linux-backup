@@ -20,13 +20,13 @@ What to backup:
 
 ### Ubuntu
 - /usr/share/nginx
-- /etc/httpd
+- /etc/nginx
 - /var/lib/mysql
 
 ### Debian
 
 - /usr/share/nginx
-- /etc/httpd
+- /etc/nginx
 - /var/lib/mysql
 
 ## TestVPS
