@@ -42,13 +42,77 @@ FILE="BACKUP_NAME"
 #2=SFTP (requires apt-get install sshpass)
 TYPE=1
 
+echo 'Checking hostsystem...'
 
 
+function check_apache {
 
+curl -I localhost > server.txt
 
+if grep -q "Apache" server.txt; then 
+	echo Apache!;
+	check_os
+else
+	echo Not found!
+fi
+}
 
+function check_os {
+cat /proc/version >> server.txt
+cat /etc/redhat-release >> server.txt
 
+if grep -q "Debian" server.txt; then 
+	echo Debian is used!;
+	folders_debian;
 
+elif grep -q "Ubuntu" server.txt; then 
+	echo Ubuntu is used!;
+	folders_ubuntu;
+
+elif grep -q "CentOS" server.txt; then 
+	echo CentOS is used!;
+	folders_centos;
+
+else 
+	echo OS not supported!
+fi
+	
+}
+
+function folders_debian {
+
+read -p "Do you want to backup folder /var/www? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/apache2? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/lib/mysql? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/ssl/certs? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /run/apache2? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/run/apache2? ";
+if [ $REPLY == "y" ]; then
+    echo Backing up folder...;
+fi
+}
+
+check_apache
 
 
 
