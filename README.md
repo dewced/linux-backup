@@ -45,7 +45,7 @@ What to backup:
 Droplet Name: ubuntu-s-1vcpu-1gb-ams3-01
 IP Address: 188.166.12.77
 Username: root
-Password: 11e9699d0f465ba3f5f680c312
+Password: linuxbackup1819
 
 #### Rolverdeling
 
