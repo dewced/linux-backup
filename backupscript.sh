@@ -83,35 +83,42 @@ function folders_debian {
 
 read -p "Do you want to backup folder /var/www? ";
 if [ $REPLY == "y" ]; then
+#TODO CDW
     echo Backing up folder...;
 fi
 
 read -p "Do you want to backup folder /etc/apache2? ";
 if [ $REPLY == "y" ]; then
+#TODO CDW
     echo Backing up folder...;
 fi
 
 read -p "Do you want to backup folder /var/lib/mysql? ";
 if [ $REPLY == "y" ]; then
+#TODO CDW
     echo Backing up folder...;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
 if [ $REPLY == "y" ]; then
+#TODO CDW
     echo Backing up folder...;
 fi
 
 read -p "Do you want to backup folder /run/apache2? ";
 if [ $REPLY == "y" ]; then
+#TODO CDW
     echo Backing up folder...;
 fi
 
 read -p "Do you want to backup folder /var/run/apache2? ";
-if [ $REPLY == "y" ]; then
+if [ $REPLY == "y" ]; 
+#TODO CDW
     echo Backing up folder...;
 fi
 }
 
+# Kwinten doet OS
 check_apache
 
 
