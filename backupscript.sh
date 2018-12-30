@@ -85,36 +85,42 @@ read -p "Do you want to backup folder /var/www? ";
 if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
+	cp -r /var/www $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/apache2? ";
 if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
+	cp -r /etc/apache2 $DIR;
 fi
 
 read -p "Do you want to backup folder /var/lib/mysql? ";
 if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
+	cp -r /var/lib/mysql $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
 if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
+	cp -r /etc/ssl/certs $DIR;
 fi
 
 read -p "Do you want to backup folder /run/apache2? ";
 if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
+	cp -r /run/apache2 $DIR;
 fi
 
 read -p "Do you want to backup folder /var/run/apache2? ";
 if [ $REPLY == "y" ]; 
 #TODO CDW
     echo Backing up folder...;
+	cp -r /var/run/apache2 $DIR;
 fi
 }
 
