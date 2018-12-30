@@ -45,33 +45,36 @@ TYPE=1
 echo 'Checking hostsystem...'
 
 
-function check_apache {
+function check_webapp {
 
 curl -I localhost > server.txt
 
-if grep -q "Apache" server.txt; then 
-	echo Apache!;
-	check_os
+if grep -q "apache" server.txt; then 
+	echo Apache is being used!;
+	check_os_apache
+elif grep -q "nginx" server.txt; then 
+	echo Nginx is being used!;
+	nginx_folders
 else
-	echo Not found!
+	echo No Webserver found!
 fi
 }
 
-function check_os {
+function check_os_apache {
 cat /proc/version >> server.txt
 cat /etc/redhat-release >> server.txt
 
 if grep -q "Debian" server.txt; then 
-	echo Debian is used!;
-	folders_debian;
+	echo Debian is being used!;
+	apache_folders_debian;
 
 elif grep -q "Ubuntu" server.txt; then 
-	echo Ubuntu is used!;
-	folders_ubuntu;
+	echo Ubuntu is being used!;
+	apache_folders_ubuntu;
 
 elif grep -q "CentOS" server.txt; then 
-	echo CentOS is used!;
-	folders_centos;
+	echo CentOS is being used!;
+	apache_folders_centos;
 
 else 
 	echo OS not supported!
@@ -79,7 +82,25 @@ fi
 	
 }
 
-function folders_debian {
+
+
+
+
+function apache_folders_debian {
+
+read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
+if [ $REPLY == "A" ]; then
+#TODO CDW
+    echo Backing up every folder...;
+fi
+
+else 
+	apache_folders_debian_choose
+	
+}
+
+
+function apache_folders_debian_choose {
 
 read -p "Do you want to backup folder /var/www? ";
 if [ $REPLY == "y" ]; then
@@ -118,8 +139,140 @@ if [ $REPLY == "y" ];
 fi
 }
 
-# Kwinten doet OS
-check_apache
+
+function apache_folders_ubuntu {
+
+read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
+if [ $REPLY == "A" ]; then
+#TODO CDW
+    echo Backing up every folder...;
+fi
+
+else 
+	apache_folders_ubuntu_choose
+	
+}
+
+function apache_folders_ubuntu_choose {
+
+read -p "Do you want to backup folder /var/www? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/httpd? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/lib/mysql? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/ssl/certs? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /run/httpd? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/run/httpd? ";
+if [ $REPLY == "y" ]; 
+#TODO CDW
+    echo Backing up folder...;
+fi
+}
+
+
+
+
+
+
+
+
+
+
+
+
+####  NGINX ####
+
+
+function nginx_folders {
+
+read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
+if [ $REPLY == "A" ]; then
+#TODO CDW
+    echo Backing up every folder...;
+fi
+
+else 
+	nginx_folders_debian_choose
+	
+}
+
+function nginx_folders_choose {
+
+read -p "Do you want to backup folder /usr/share/nginx? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/nginx? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /usr/local/nginx/conf? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /usr/local/etc/nginx? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/lib/mysql? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /etc/ssl/certs? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /run/nginx.pid? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+fi
+
+read -p "Do you want to backup folder /var/run/nginx.pid? ";
+if [ $REPLY == "y" ]; 
+#TODO CDW
+    echo Backing up folder...;
+fi
+}
+
+
+
+check_webapp
 
 
 
