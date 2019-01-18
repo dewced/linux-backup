@@ -328,11 +328,11 @@ else
 echo 'Please select a valid type'
 fi
 
-echo 'Remote Backup Complete'
+echo -e "${GREEN}Remote Backup Complete\e[0m"
 cleanlocaltempbackup
 #END
 
 cleanlocaltempbackup() {
   rm -f ./$FILE
-  echo 'Local Backup Has Been Removed'
+  echo -e "${GREEN}Local Backup Has Been Removed\e[0m"
 }
