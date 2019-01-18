@@ -1,11 +1,10 @@
-# Linux Backup Script
-Linux-Backup
+# Linux Backup Script: what to backup
 
-What to backup:
+## Ubuntu
 
-## Apache
+### Apache:
 
-### Ubuntu:
+
 - /var/www
 - /etc/httpd
 - /var/lib/mysql
@@ -13,7 +12,17 @@ What to backup:
 - /run/httpd
 - /var/run/httpd
 
-### Debian:
+### Nginx:
+
+- /usr/share/nginx
+- /etc/nginx en als het daar niet staat onder /usr/local/nginx/conf of /usr/local/etc/nginx
+- /var/lib/mysql
+- /etc/ssl/certs voor de certificaten
+- /run/nginx.pid
+- /var/run/nginx.pid
+## Debian
+
+### Apache:
 
 - /var/www
 - /etc/apache2
@@ -22,17 +31,7 @@ What to backup:
 - /run/apache2
 - /var/run/apache2
 
-## Nginx
-
-### Ubuntu
-- /usr/share/nginx
-- /etc/nginx en als het daar niet staat onder /usr/local/nginx/conf of /usr/local/etc/nginx
-- /var/lib/mysql
-- /etc/ssl/certs voor de certificaten
-- /run/nginx.pid
-- /var/run/nginx.pid
-
-### Debian
+### Nginx:
 
 - /usr/share/nginx
 - /etc/nginx en als het daar niet staat onder /usr/local/nginx/conf of /usr/local/etc/nginx
@@ -40,6 +39,25 @@ What to backup:
 - /etc/ssl/certs voor de certificaten
 - /run/nginx.pid
 - /var/run/nginx.pid
+
+## CentOS
+
+### Apache:
+
+- /etc/httpd/conf.d/
+- /var/www/
+- /etc/httpd/conf/
+- /etc/ssl/certs voor de certificaten
+- /run/httpd
+- /var/run/httpd
+
+### Nginx:
+
+- /etc/nginx/
+- /etc/nginx/nginx.conf
+- /usr/share/nginx/html
+- /etc/nginx/conf.d/default.conf
+- /etc/nginx/conf.d
 
 ## TestVPS
 Droplet Name: ubuntu-s-1vcpu-1gb-ams3-01
