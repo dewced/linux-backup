@@ -22,7 +22,7 @@ Voor Ubunto zijn dit voor Apache: /var/www/, /etc/httpd/, /var/lib/mysql/, /etc/
 1. Van zodra je je op dit hostsysteem bevindt, ga je naar de terminal.
 2. Je zorgt ervoor dat het `backupscript.sh` zich bevindt onder /home. 
 3. Voor je het script gaat uitvoeren, ga je in dit script en geef je de info in voor de FTP server zoals username, wachtwoord, server IP en de poort.
-4. Je begeeft je naar de /home directory en voert het backupscript uit door het commando: `sudo backupscript.sh`.
+4. Je begeeft je naar de /home directory en voert het backupscript uit door het commando: `bash backupscript.sh`.
 5. Van zodra je dit hebt gedaan wordt het hostsysteem geëvalueerd en wordt bekeken wel OS dit is. Het geeft dan ook de vraag welke mapjes je zou willen backuppen.
 6. Om nu te checken of dit wel degelijk goed gedaan is, gaan we in de FTP server en unzippen we deze zip en kijken we of alles hier in zit.
 
