@@ -220,7 +220,7 @@ read -p "Do you want to do a complete back-up (A) or choose what you want to bac
 if [[ $REPLY == "A" ]]; then
 #TODO CDW
     echo Backing up every folder...;
-	cp -r /etc/httpd/conf.d $tDIR;
+	cp -r /etc/httpd/conf.d $DIR;
 	cp -r /var/www $DIR;
 	cp -r /etc/httpd/conf $DIR;
 	cp -r /etc/ssl/certs $DIR;
@@ -368,7 +368,7 @@ d=$(date --iso)
 
 FILE=$FILE"_"$d".tar.gz"
 tar -czvf ./$FILE $DIR
-echo 'Zipping it is complete!'
+echo -e "${GREEN}Zipping it is complete!\e[0m"
 
 if [ $TYPE -eq 1 ]
 then
@@ -382,7 +382,7 @@ elif [ $TYPE -eq 2 ]
 then
 rsync --rsh="sshpass -p $PASSWORD ssh -p $PORT -o StrictHostKeyChecking=no -l $USERNAME" $FILE $SERVER:$REMOTEDIR
 else
-echo 'Please select a valid type'
+echo -e "${RED}Please select a valid type\e[0m"
 fi
 
 echo -e "${GREEN}Remote Backup Complete\e[0m"
