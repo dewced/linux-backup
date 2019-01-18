@@ -49,10 +49,10 @@ function check_webapp {
 
 curl -I localhost > server.txt
 
-if grep -q "apache" server.txt; then 
+if grep -q "Apache" server.txt; then 
 	echo Apache is being used!;
 	check_os_apache
-elif grep -q "nginx" server.txt; then 
+elif grep -q "Nginx" server.txt; then 
 	echo Nginx is being used!;
 	nginx_folders
 else
@@ -94,10 +94,9 @@ if [ $REPLY == "A" ]; then
 	cp -r /etc/ssl/certs $DIR;
 	cp -r /run/apache2 $DIR;
 	cp -r /var/run/apache2 $DIR;
-fi
-
 else 
 	apache_folders_debian_choose
+fi
 }
 
 
@@ -142,7 +141,7 @@ if [ $REPLY == "y" ]; then
 fi
 
 read -p "Do you want to backup folder /var/run/apache2? ";
-if [ $REPLY == "y" ]; 
+if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
 	cp -r /var/run/apache2 $DIR;
@@ -161,10 +160,9 @@ if [ $REPLY == "A" ]; then
 	cp -r /etc/ssl/certs $DIR;
 	cp -r /run/httpd $DIR;
 	cp -r /var/run/httpd $DIR;
-fi
-
 else 
 	apache_folders_ubuntu_choose
+fi
 	
 }
 
@@ -206,7 +204,7 @@ if [ $REPLY == "y" ]; then
 fi
 
 read -p "Do you want to backup folder /var/run/httpd? ";
-if [ $REPLY == "y" ]; 
+if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
 	cp -r /var/run/httpd $DIR;
@@ -234,10 +232,9 @@ if [ $REPLY == "A" ]; then
 	cp -r /etc/ssl/certs $DIR;
 	cp -r /run/nginx.pid $DIR;
 	cp -r /var/run/nginx.pid $DIR;
-fi
-
 else 
 	nginx_folders_debian_choose
+fi
 	
 }
 
@@ -293,7 +290,7 @@ if [ $REPLY == "y" ]; then
 fi
 
 read -p "Do you want to backup folder /var/run/nginx.pid? ";
-if [ $REPLY == "y" ]; 
+if [ $REPLY == "y" ]; then
 #TODO CDW
     echo Backing up folder...;
 	cp -r /var/run/nginx.pid $DIR;
