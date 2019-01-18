@@ -45,7 +45,7 @@ TYPE=1
 echo 'Checking hostsystem...'
 
 
-function check_webapp {
+check_webapp() {
 
 curl -I localhost > server.txt
 
@@ -60,7 +60,7 @@ else
 fi
 }
 
-function check_os_apache {
+check_os_apache() {
 cat /proc/version >> server.txt
 cat /etc/redhat-release >> server.txt
 
@@ -82,7 +82,7 @@ fi
 	
 }
 
-function apache_folders_debian {
+apache_folders_debian() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
 if [ $REPLY == "A" ]; then
@@ -103,7 +103,7 @@ fi
 
 
 
-function apache_folders_debian_choose {
+apache_folders_debian_choose() {
 
 read -p "Do you want to backup folder /var/www? ";
 if [ $REPLY == "y" ]; then
@@ -148,7 +148,7 @@ if [ $REPLY == "y" ]; then
 fi
 }
 
-function apache_folders_ubuntu {
+apache_folders_ubuntu() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
 if [ $REPLY == "A" ]; then
@@ -166,7 +166,7 @@ fi
 	
 }
 
-function apache_folders_ubuntu_choose {
+apache_folders_ubuntu_choose() {
 
 read -p "Do you want to backup folder /var/www? ";
 if [ $REPLY == "y" ]; then
@@ -218,7 +218,7 @@ fi
 ####  NGINX ####
 
 
-function nginx_folders {
+nginx_folders() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
 if [ $REPLY == "A" ]; then
@@ -238,7 +238,7 @@ fi
 	
 }
 
-function nginx_folders_choose {
+nginx_folders_choose() {
 
 read -p "Do you want to backup folder /usr/share/nginx? ";
 if [ $REPLY == "y" ]; then
