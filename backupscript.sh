@@ -44,40 +44,44 @@ TYPE=1
 
 echo 'Checking hostsystem...'
 
+RED='\033[0;31m'
+GREEN='\e[32m'
 
 check_webapp() {
 
-curl -I localhost > server.txt
+curl -I localhost > server.txt 2> /dev/null                           
 
 if grep -q "Apache" server.txt; then 
-	echo Apache is being used!;
+	 echo -e "${GREEN}Apache is being used!\e[0m";
 	check_os_apache
 elif grep -q "Nginx" server.txt; then 
-	echo Nginx is being used!;
+	echo -e "${GREEN}Nginx is being used!\e[0m";
 	nginx_folders
 else
-	echo No Webserver found!
+    echo -e "${RED}No Webserver found!\e[0m";
+
 fi
 }
 
 check_os_apache() {
-cat /proc/version >> server.txt
-cat /etc/redhat-release >> server.txt
+cat /proc/version >> server.txt 2> /dev/null
+cat /etc/redhat-release >> server.txt 2> /dev/null
 
 if grep -q "Debian" server.txt; then 
-	echo Debian is being used!;
+	echo -e "${GREEN}Debian is being used!\e[0m";
 	apache_folders_debian;
 
 elif grep -q "Ubuntu" server.txt; then 
-	echo Ubuntu is being used!;
+	echo -e "${GREEN}Ubuntu is being used!\e[0m";
 	apache_folders_ubuntu;
 
 elif grep -q "CentOS" server.txt; then 
-	echo CentOS is being used!;
+	echo -e "${GREEN}CentOS is being used!\e[0m";
 	apache_folders_centos;
 
 else 
-	echo OS not supported!
+	echo -e "${RED}OS not supported!\e[0m";
+
 fi
 	
 }
@@ -154,7 +158,7 @@ read -p "Do you want to do a complete back-up (A) or choose what you want to bac
 if [ $REPLY == "A" ]; then
 #TODO CDW
     echo Backing up every folder...;
-	cp -r /var/www $DIR;
+	cp -r /var/www $tDIR;
 	cp -r /etc/httpd $DIR;
 	cp -r /var/lib/mysql $DIR;
 	cp -r /etc/ssl/certs $DIR;
