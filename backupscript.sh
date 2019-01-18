@@ -18,7 +18,7 @@ PORT="REMOTE SERVER PORT"
 #Please do comment out the folders which you like to backup:
 
 #WEB FOLDERS
-"/var/www"
+#"/var/www"
 
 #TODO: DIR is dus het mapje dat je naar de remote server kan duwen. Als we dus iets maken dat ofwel per gekozen mapje, iedere keer onderstaand script triggert.
 #kunnen we de opslag nodig minimaliseren. Wat is de workflow dus?
@@ -215,9 +215,66 @@ if [ $REPLY == "y" ]; then
 fi
 }
 
+apache_folders_centos(){
+read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
+if [ $REPLY == "A" ]; then
+#TODO CDW
+    echo Backing up every folder...;
+	cp -r /etc/httpd/conf.d $tDIR;
+	cp -r /var/www $DIR;
+	cp -r /etc/httpd/conf $DIR;
+	cp -r /etc/ssl/certs $DIR;
+	cp -r /run/httpd $DIR;
+	cp -r /var/run/httpd $DIR;
+else 
+	apache_folders_centos_choose
+fi
+}
 
+apache_folders_centos_choose(){
 
+read -p "Do you want to backup folder /etc/httpd/conf.d? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /etc/httpd/conf.d $DIR;
+fi
 
+read -p "Do you want to backup folder /var/www/? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /var/www $DIR;
+fi
+
+read -p "Do you want to backup folder /etc/httpd/conf? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /etc/httpd/conf $DIR;
+fi
+
+read -p "Do you want to backup folder /etc/ssl/certs? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /etc/ssl/certs $DIR;
+fi
+
+read -p "Do you want to backup folder /run/httpd? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /run/httpd $DIR;
+fi
+
+read -p "Do you want to backup folder /var/run/httpd? ";
+if [ $REPLY == "y" ]; then
+#TODO CDW
+    echo Backing up folder...;
+	cp -r /var/run/httpd $DIR;
+fi
+}
 
 ####  NGINX ####
 
@@ -329,10 +386,12 @@ echo 'Please select a valid type'
 fi
 
 echo -e "${GREEN}Remote Backup Complete\e[0m"
-cleanlocaltempbackup
+
 #END
 
 cleanlocaltempbackup() {
   rm -f ./$FILE
   echo -e "${GREEN}Local Backup Has Been Removed\e[0m"
 }
+
+cleanlocaltempbackup
