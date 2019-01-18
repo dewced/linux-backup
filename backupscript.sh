@@ -89,7 +89,7 @@ fi
 apache_folders_debian() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-if [[$REPLY == "A" ]]; then
+if [[ $REPLY == "A" ]]; then
 #TODO CDW
     echo Backing up every folder...;
 	cp -r /var/www $DIR;
