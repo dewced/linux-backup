@@ -27,7 +27,7 @@
 - /var/www/
 - /etc/apache2/
 - /var/lib/mysql/
-- /etc/ssl/certs voor de certificaten
+- /etc/ssl/certs/ voor de certificaten
 - /run/apache2/
 - /var/run/apache2/
 
