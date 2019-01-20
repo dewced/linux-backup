@@ -344,6 +344,7 @@ then
 	cp -r /var/run/httpd $DIR;
 	echo "Done backing-up.."
 fi
+}
 
 ####  NGINX ####
 
@@ -450,7 +451,7 @@ then
 	cp -r /var/run/nginx.pid $DIR;
 	echo "Done backing-up.."
 fi
-
+}
 
 check_webapp
 
