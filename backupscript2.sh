@@ -89,8 +89,9 @@ fi
 apache_folders_debian() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-if [[ $REPLY = A ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = A ]]
+then
     echo Backing up every folder...;
 	cp -r /var/www $DIR;
 	cp -r /etc/apache2 $DIR;
@@ -110,43 +111,49 @@ fi
 apache_folders_debian_choose() {
 
 read -p "Do you want to backup folder /var/www? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/www $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/apache2? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/apache2 $DIR;
 fi
 
 read -p "Do you want to backup folder /var/lib/mysql? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/lib/mysql $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/ssl/certs $DIR;
 fi
 
 read -p "Do you want to backup folder /run/apache2? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /run/apache2 $DIR;
 fi
 
 read -p "Do you want to backup folder /var/run/apache2? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/run/apache2 $DIR;
 fi
@@ -155,8 +162,9 @@ fi
 apache_folders_ubuntu() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up every folder...;
 	cp -r /var/www $tDIR;
 	cp -r /etc/httpd $DIR;
@@ -173,43 +181,49 @@ fi
 apache_folders_ubuntu_choose() {
 
 read -p "Do you want to backup folder /var/www? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/www $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/httpd? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/httpd $DIR;
 fi
 
 read -p "Do you want to backup folder /var/lib/mysql? ";
-if [[[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/lib/mysql $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/ssl/certs $DIR;
 fi
 
 read -p "Do you want to backup folder /run/httpd? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /run/httpd $DIR;
 fi
 
 read -p "Do you want to backup folder /var/run/httpd? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/run/httpd $DIR;
 fi
@@ -217,8 +231,9 @@ fi
 
 apache_folders_centos(){
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-if [[ $REPLY = A ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up every folder...;
 	cp -r /etc/httpd/conf.d $DIR;
 	cp -r /var/www $DIR;
@@ -234,43 +249,49 @@ fi
 apache_folders_centos_choose(){
 
 read -p "Do you want to backup folder /etc/httpd/conf.d? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/httpd/conf.d $DIR;
 fi
 
 read -p "Do you want to backup folder /var/www/? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/www $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/httpd/conf? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/httpd/conf $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/ssl/certs $DIR;
 fi
 
 read -p "Do you want to backup folder /run/httpd? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /run/httpd $DIR;
 fi
 
 read -p "Do you want to backup folder /var/run/httpd? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/run/httpd $DIR;
 fi
@@ -282,8 +303,9 @@ fi
 nginx_folders() {
 
 read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-if [[ $REPLY = A ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = A ]]
+then
     echo Backing up every folder...;
 	cp -r /usr/share/nginx $DIR;
 	cp -r /etc/nginx $DIR;
@@ -302,57 +324,65 @@ fi
 nginx_folders_choose() {
 
 read -p "Do you want to backup folder /usr/share/nginx? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /usr/share/nginx $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/nginx? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/nginx $DIR;
 fi
 
 read -p "Do you want to backup folder /usr/local/nginx/conf? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /usr/local/nginx/conf $DIR;
 fi
 
 read -p "Do you want to backup folder /usr/local/etc/nginx? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /usr/local/etc/nginx $DIR;
 fi
 
 read -p "Do you want to backup folder /var/lib/mysql? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/lib/mysql $DIR;
 fi
 
 read -p "Do you want to backup folder /etc/ssl/certs? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /etc/ssl/certs $DIR;
 fi
 
 read -p "Do you want to backup folder /run/nginx.pid? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /run/nginx.pid $DIR;
 fi
 
 read -p "Do you want to backup folder /var/run/nginx.pid? ";
-if [[ $REPLY = y ]] ; then
-#TODO CDW
+echo
+if [[ $REPLY = y ]]
+then
     echo Backing up folder...;
 	cp -r /var/run/nginx.pid $DIR;
 fi
