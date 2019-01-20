@@ -3,7 +3,7 @@
 # Linux Automated Backup Script
 # Version: 1.0
 # Script by: Cedric De Witte - Kwinten Braet - Sam Strobbe
-# Support: info@cedricdewitte.be - info@kwintenbraet.be - samstrobbe0309@hotmail.com
+# Support: info@cedricdewitte.be - info@kwintenbraet.be - sam.strobbe0309@hotmail.com
 
 ########################################
 # Please fill in your relevant details #
