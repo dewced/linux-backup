@@ -3,7 +3,7 @@
 # Linux Automated Backup Script
 # Version: 1.0
 # Script by: Cedric De Witte - Kwinten Braet - Sam Strobbe
-# Support: info@cedricdewitte.be - info@kwintenbraet.be
+# Support: info@cedricdewitte.be - info@kwintenbraet.be - samstrobbe0309@hotmail.com
 
 ########################################
 # Please fill in your relevant details #
@@ -29,10 +29,13 @@ PORT="21"
 #5. Herhaal stappen met volgende map die je moet backuppen
 
 # Where do I need to backup? (TODO: Extend to multiple folders, allow to choose)
-DIR="/root/BACKUPDIR"
+DIR="/root/backup"
+mkdir $DIR
+echo "Your temporary backupdirectory has been created!"
 
 #Remote directory where the backup will be stored
 REMOTEDIR="./"
+
 
 #Filename of backup file to be transfered // DO NOT ADD EXTENSION
 FILE="BACKUP_NAME"
@@ -42,7 +45,7 @@ FILE="BACKUP_NAME"
 #2=SFTP (requires apt-get install sshpass)
 TYPE=1
 
-echo 'Checking hostsystem...'
+echo "Checking hostsystem..."
 
 RED='\033[0;31m'
 GREEN='\e[32m'
@@ -86,11 +89,12 @@ fi
 
 }
 
+
 apache_folders_debian() {
 
 echo "Do you want to do a complete back-up (1) or choose what you want to back-up (2)?"
-read var1
-if [ $var1 -eq 1 ]
+read debian1
+if [ $debian1 -eq 1 ]
 then
 	echo "Backing up every folder..."
 	cp -r /var/www $DIR;
@@ -100,7 +104,7 @@ then
 	cp -r /run/apache2 $DIR;
 	cp -r /var/run/apache2 $DIR;
 else
-	if [ $var1 -eq 2 ]
+	if [ $debian1 -eq 2 ]
 	then
 		apache_folders_debian_choose
 		echo "001"
@@ -112,63 +116,69 @@ fi
 apache_folders_debian_choose() {
 
 echo "Do you want to backup folder /var/www? (1 for yes)"
-read var2
-if [ $var2 -eq 1 ]
+read debian2
+if [ $debian2 -eq 1 ]
 then
-  echo "Backing up folder...(abc)"
-	cp -rf /root/CEDRIC /root/BACKUPDIR;
-	echo "done copying...(abc)"
+  echo "Backing up folder..."
+	cp -r /var/www $DIR;
+	echo "done copying..."
 fi
 
-# read -p "Do you want to backup folder /etc/apache2? ";
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     echo Backing up folder...;
-# 	cp -r /etc/apache2 $DIR;
-# fi
+echo "Do you want to backup folder /etc/apache2? (1 for yes)"
+read debian3
+if [ $debian3 -eq 1 ]
+then
+  echo "Backing up folder...;"
+    cp -r /etc/apache2 $DIR;
+    echo "Done backing-up."
+fi
+
+echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+read debian4
+if [ $debian4 -eq 1 ]
+then
+  echo "Backing up folder..."
+  cp -r /var/lib/mysql $DIR;
+  echo "Done backing-up."
+fi
 #
-# read -p "Do you want to backup folder /var/lib/mysql? ";
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     echo Backing up folder...;
-# 	cp -r /var/lib/mysql $DIR;
-# fi
-#
-# read -p "Do you want to backup folder /etc/ssl/certs? ";
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     echo Backing up folder...;
-# 	cp -r /etc/ssl/certs $DIR;
-# fi
-#
-# read -p "Do you want to backup folder /run/apache2? ";
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     echo Backing up folder...;
-# 	cp -r /run/apache2 $DIR;
-# fi
-#
-# read -p "Do you want to backup folder /var/run/apache2? ";
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     echo Backing up folder...;
-# 	cp -r /var/run/apache2 $DIR;
-# fi
+
+echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+read debian5
+if [ $debian5 -eq 1 ]
+then
+  echo "Backing up folder..."
+  cp -r /etc/ssl/certs $DIR;
+  echo "Done backing-up."
+fi
+
+echo "Do you want to backup folder /run/apache2? (1 for yes)"
+read debian6
+if [ $debian6 -eq 1 ]
+then
+  echo "Backing up folder..."
+  cp -r /run/apache2 $DIR;
+  echo "Done backing-up."
+fi
+
+echo "Do you want to backup folder /var/run/apache2? (1 for yes)"
+read debian7
+if [ $debian7 -eq 1 ]
+then
+  echo "Backing up folder..."
+  cp -r /var/run/apache2 $DIR;
+  echo "Done backing-up."
+fi
+
 }
 
 apache_folders_ubuntu() {
 
-read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to do a complete back-up (1) or choose what you want to back-up (2)?"
+read ubuntu1
+if [ $ubuntu1 -eq 1 ]
 then
     echo Backing up every folder...;
-		echo "002"
 	cp -r /var/www $tDIR;
 	cp -r /etc/httpd $DIR;
 	cp -r /var/lib/mysql $DIR;
@@ -176,69 +186,82 @@ then
 	cp -r /run/httpd $DIR;
 	cp -r /var/run/httpd $DIR;
 else
-	apache_folders_ubuntu_choose
+	if [ $ubuntu1 -eq 2 ]
+	then
+		apache_folders_ubuntu_choose
+		echo "001"
+	fi
 fi
-
 }
 
 apache_folders_ubuntu_choose() {
 
-read -p "Do you want to backup folder /var/www? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /var/www? (1 for yes)"
+read ubuntu2
+if [ $ubuntu2 -eq 1 ]
 then
-    echo Backing up folder...;
-		echo "003"
+  echo "Backing up folder..."
 	cp -r /var/www $DIR;
+	echo "Done backing-up."
 fi
 
-read -p "Do you want to backup folder /etc/httpd? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /etc/httpd? (1 for yes)"
+read ubuntu3
+if [ $ubuntu3 -eq 1 ]
 then
-    echo Backing up folder...;
-		echo "004"
+  echo "Backing up folder..."
 	cp -r /etc/httpd $DIR;
+	echo "Done backing-up."
 fi
 
-read -p "Do you want to backup folder /var/lib/mysql? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+
+echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+read ubuntu4
+if [ $ubuntu4 -eq 1 ]
 then
-    echo Backing up folder...;
-		echo "005"
+  echo "Backing up folder..."
 	cp -r /var/lib/mysql $DIR;
+	echo "Done backing-up."
 fi
 
-read -p "Do you want to backup folder /etc/ssl/certs? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+read ubuntu5
+if [ $ubuntu5 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/ssl/certs $DIR;
+	echo "Done backing-up."
 fi
 
-read -p "Do you want to backup folder /run/httpd? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /run/httpd? (1 for yes)"
+read ubuntu6
+if [ $ubuntu6 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /run/httpd $DIR;
+	echo "Done backing-up."
 fi
 
-read -p "Do you want to backup folder /var/run/httpd? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /var/run/httpd? (1 for yes)"
+read ubuntu7
+if [ $ubuntu7 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /var/run/httpd $DIR;
+	echo "Done backing-up.."
 fi
+
 }
 
 apache_folders_centos(){
-read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to do a complete back-up (1) or choose what you want to back-up (2)?"
+read centos1
+if [ $centos1 -eq 1 ]
 then
     echo Backing up every folder...;
 	cp -r /etc/httpd/conf.d $DIR;
@@ -249,71 +272,87 @@ then
 	cp -r /var/run/httpd $DIR;
 	echo "006"
 else
-	apache_folders_centos_choose
+	if [ $centos1 -eq 2 ]
+	then
+		apache_folders_centos_choose
+		echo "001"
+	fi
 fi
 }
 
 apache_folders_centos_choose(){
 
-read -p "Do you want to backup folder /etc/httpd/conf.d? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+
+echo "Do you want to backup folder /etc/httpd/conf.d? (1 for yes)"
+read centos2
+if [ $centos2 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/httpd/conf.d $DIR;
-	echo "007"
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /var/www/? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /var/www/? (1 for yes)"
+read centos3
+if [ $centos3 -eq 1 ]
 then
-    echo Backing up folder...;
-	cp -r /var/www $DIR;
+  echo "Backing up folder..."
+	cp -r /var/www/ $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /etc/httpd/conf? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+
+echo "Do you want to backup folder /etc/httpd/conf? (1 for yes)"
+read centos4
+if [ $centos4 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/httpd/conf $DIR;
-	echo "008"
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /etc/ssl/certs? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+read centos5
+if [ $centos5 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/ssl/certs $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /run/httpd? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+
+echo "Do you want to backup folder /run/httpd? (1 for yes)"
+read centos6
+if [ $centos6 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /run/httpd $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /var/run/httpd? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+
+echo "Do you want to backup folder /var/run/httpd? (1 for yes)"
+read centos7
+if [ $centos7 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /var/run/httpd $DIR;
+	echo "Done backing-up.."
 fi
-}
 
 ####  NGINX ####
 
 
 nginx_folders() {
 
-read -p "Do you want to do a complete back-up (A) or choose what you want to back-up (B)? ";
-echo
-if [[ $REPLY =~ ^[Aa]$ ]]
+echo "Do you want to do a complete back-up (1) or choose what you want to back-up (2)?"
+read nginx1
+if [ $nginx1 -eq 1 ]
 then
     echo Backing up every folder...;
 	cp -r /usr/share/nginx $DIR;
@@ -326,78 +365,91 @@ then
 	cp -r /var/run/nginx.pid $DIR;
 	echo "011"
 else
-	nginx_folders_debian_choose
+	if [ $nginx1 -eq 2 ]
+	then
+		apache_folders_centos_choose
+		echo "001"
+	fi
 fi
 
 }
 
 nginx_folders_choose() {
 
-read -p "Do you want to backup folder /usr/share/nginx? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /usr/share/nginx? (1 for yes)"
+read nginx2
+if [ $nginx2 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /usr/share/nginx $DIR;
-		echo "012"
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /etc/nginx? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /etc/nginx? (1 for yes)"
+read nginx3
+if [ $nginx3 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/nginx $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /usr/local/nginx/conf? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /usr/local/nginx/conf? (1 for yes)"
+read nginx4
+if [ $nginx4 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /usr/local/nginx/conf $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /usr/local/etc/nginx? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /usr/local/etc/nginx? (1 for yes)"
+read nginx5
+if [ $nginx5 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /usr/local/etc/nginx $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /var/lib/mysql? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+read nginx6
+if [ $nginx6 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /var/lib/mysql $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /etc/ssl/certs? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+read nginx7
+if [ $nginx7 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /etc/ssl/certs $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /run/nginx.pid? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+echo "Do you want to backup folder /run/nginx.pid? (1 for yes)"
+read nginx8
+if [ $nginx8 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /run/nginx.pid $DIR;
+	echo "Done backing-up.."
 fi
 
-read -p "Do you want to backup folder /var/run/nginx.pid? ";
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+
+echo "Do you want to backup folder /var/run/nginx.pid? (1 for yes)"
+read nginx9
+if [ $nginx9 -eq 1 ]
 then
-    echo Backing up folder...;
+  echo "Backing up folder..."
 	cp -r /var/run/nginx.pid $DIR;
+	echo "Done backing-up.."
 fi
-}
 
 
 check_webapp
@@ -428,11 +480,11 @@ fi
 
 echo -e "${GREEN}Remote Backup Complete\e[0m"
 
+cleanlocaltempbackup
 #END
 
 cleanlocaltempbackup() {
-  rm -f /root/BACKUPDIR
+  rm -r $DIR
+	rm server.txt
   echo -e "${GREEN}Local Backup Has Been Removed\e[0m"
 }
-
-cleanlocaltempbackup
