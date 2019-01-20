@@ -10,9 +10,9 @@
 ########################################
 
 # FTP Credentials
-USERNAME="cedricdwsam"
-PASSWORD="linuxbackup"
-SERVER="cedric.store"
+USERNAME="Your username"
+PASSWORD="Your password"
+SERVER="Your IP or hostname"
 PORT="21"
 
 #Please do comment out the folders which you like to backup:
