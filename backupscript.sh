@@ -80,7 +80,7 @@ FILE="BACKUP_NAME"
 function help {
 	echo "
 This is a backup script for Linux that can back up an entire webserver and uploads the back-up to a FTP server. You can choose to do a full back-up at once or choose the different folders.
-*** If you get an Not Connected error. That means that the FTP Credentials you entered are wrong. ***"
+*** If you get a Not Connected error. That means that the FTP Credentials you entered are wrong. ***"
 }
 
 if [ "${1}" == "--help" ]; then
