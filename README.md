@@ -1,5 +1,9 @@
-# Linux Backup Script: what to backup
+# Linux Backup Script for backup to FTP/SFTP server!
 
+**This is a backup script for Linux that can back up an entire webserver and uploads the back-up to a FTP server. You can choose to do a full back-up at once or choose the different folders.**
+_*** If you get an Not Connected error at the end. That means that the FTP Credentials you entered are wrong. ***_
+
+# Which folders are backed up?
 ## Ubuntu
 
 ### Apache:
