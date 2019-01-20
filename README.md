@@ -69,4 +69,4 @@ Password: linuxbackup1819
 
 - Kwinten: testen backupscript
 - Cedric: Verder werken aan script
-- Sam: zien welke mapjes bij elke service belangrijk zijn om te backuppen + testing
+- Sam: zien welke mapjes bij elke service belangrijk zijn om te backuppen + testing + code aanpassen backupscript.sh 
