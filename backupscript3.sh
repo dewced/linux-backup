@@ -115,7 +115,7 @@ fi
 
 apache_folders_debian_choose() {
 
-echo "Do you want to backup folder /var/www? (1 for yes)"
+echo "Do you want to backup folder /var/www? (Choose 1 for YES and 2 for NO)"
 read debian2
 if [ $debian2 -eq 1 ]
 then
@@ -124,7 +124,7 @@ then
 	echo "done copying..."
 fi
 
-echo "Do you want to backup folder /etc/apache2? (1 for yes)"
+echo "Do you want to backup folder /etc/apache2? (Choose 1 for YES and 2 for NO)"
 read debian3
 if [ $debian3 -eq 1 ]
 then
@@ -133,7 +133,7 @@ then
     echo "Done backing-up."
 fi
 
-echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+echo "Do you want to backup folder /var/lib/mysql? (Choose 1 for YES and 2 for NO)"
 read debian4
 if [ $debian4 -eq 1 ]
 then
@@ -143,7 +143,7 @@ then
 fi
 #
 
-echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
 read debian5
 if [ $debian5 -eq 1 ]
 then
@@ -152,7 +152,7 @@ then
   echo "Done backing-up."
 fi
 
-echo "Do you want to backup folder /run/apache2? (1 for yes)"
+echo "Do you want to backup folder /run/apache2? (Choose 1 for YES and 2 for NO)"
 read debian6
 if [ $debian6 -eq 1 ]
 then
@@ -161,7 +161,7 @@ then
   echo "Done backing-up."
 fi
 
-echo "Do you want to backup folder /var/run/apache2? (1 for yes)"
+echo "Do you want to backup folder /var/run/apache2? (Choose 1 for YES and 2 for NO)"
 read debian7
 if [ $debian7 -eq 1 ]
 then
@@ -196,7 +196,7 @@ fi
 
 apache_folders_ubuntu_choose() {
 
-echo "Do you want to backup folder /var/www? (1 for yes)"
+echo "Do you want to backup folder /var/www? (Choose 1 for YES and 2 for NO)"
 read ubuntu2
 if [ $ubuntu2 -eq 1 ]
 then
@@ -206,7 +206,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /etc/httpd? (1 for yes)"
+echo "Do you want to backup folder /etc/httpd? (Choose 1 for YES and 2 for NO)"
 read ubuntu3
 if [ $ubuntu3 -eq 1 ]
 then
@@ -217,7 +217,7 @@ fi
 
 
 
-echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+echo "Do you want to backup folder /var/lib/mysql? (Choose 1 for YES and 2 for NO)"
 read ubuntu4
 if [ $ubuntu4 -eq 1 ]
 then
@@ -226,7 +226,7 @@ then
 	echo "Done backing-up."
 fi
 
-echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
 read ubuntu5
 if [ $ubuntu5 -eq 1 ]
 then
@@ -236,7 +236,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /run/httpd? (1 for yes)"
+echo "Do you want to backup folder /run/httpd? (Choose 1 for YES and 2 for NO)"
 read ubuntu6
 if [ $ubuntu6 -eq 1 ]
 then
@@ -246,7 +246,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /var/run/httpd? (1 for yes)"
+echo "Do you want to backup folder /var/run/httpd? (Choose 1 for YES and 2 for NO)"
 read ubuntu7
 if [ $ubuntu7 -eq 1 ]
 then
@@ -284,7 +284,7 @@ apache_folders_centos_choose(){
 
 
 
-echo "Do you want to backup folder /etc/httpd/conf.d? (1 for yes)"
+echo "Do you want to backup folder /etc/httpd/conf.d? (Choose 1 for YES and 2 for NO)"
 read centos2
 if [ $centos2 -eq 1 ]
 then
@@ -294,7 +294,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /var/www/? (1 for yes)"
+echo "Do you want to backup folder /var/www/? (Choose 1 for YES and 2 for NO)"
 read centos3
 if [ $centos3 -eq 1 ]
 then
@@ -305,7 +305,7 @@ fi
 
 
 
-echo "Do you want to backup folder /etc/httpd/conf? (1 for yes)"
+echo "Do you want to backup folder /etc/httpd/conf? (Choose 1 for YES and 2 for NO)"
 read centos4
 if [ $centos4 -eq 1 ]
 then
@@ -314,7 +314,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
 read centos5
 if [ $centos5 -eq 1 ]
 then
@@ -325,7 +325,7 @@ fi
 
 
 
-echo "Do you want to backup folder /run/httpd? (1 for yes)"
+echo "Do you want to backup folder /run/httpd? (Choose 1 for YES and 2 for NO)"
 read centos6
 if [ $centos6 -eq 1 ]
 then
@@ -336,7 +336,7 @@ fi
 
 
 
-echo "Do you want to backup folder /var/run/httpd? (1 for yes)"
+echo "Do you want to backup folder /var/run/httpd? (Choose 1 for YES and 2 for NO)"
 read centos7
 if [ $centos7 -eq 1 ]
 then
@@ -378,7 +378,7 @@ fi
 nginx_folders_choose() {
 
 
-echo "Do you want to backup folder /usr/share/nginx? (1 for yes)"
+echo "Do you want to backup folder /usr/share/nginx? (Choose 1 for YES and 2 for NO)"
 read nginx2
 if [ $nginx2 -eq 1 ]
 then
@@ -387,7 +387,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /etc/nginx? (1 for yes)"
+echo "Do you want to backup folder /etc/nginx? (Choose 1 for YES and 2 for NO)"
 read nginx3
 if [ $nginx3 -eq 1 ]
 then
@@ -397,7 +397,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /usr/local/nginx/conf? (1 for yes)"
+echo "Do you want to backup folder /usr/local/nginx/conf? (Choose 1 for YES and 2 for NO)"
 read nginx4
 if [ $nginx4 -eq 1 ]
 then
@@ -406,7 +406,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /usr/local/etc/nginx? (1 for yes)"
+echo "Do you want to backup folder /usr/local/etc/nginx? (Choose 1 for YES and 2 for NO)"
 read nginx5
 if [ $nginx5 -eq 1 ]
 then
@@ -415,7 +415,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /var/lib/mysql? (1 for yes)"
+echo "Do you want to backup folder /var/lib/mysql? (Choose 1 for YES and 2 for NO)"
 read nginx6
 if [ $nginx6 -eq 1 ]
 then
@@ -424,7 +424,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /etc/ssl/certs? (1 for yes)"
+echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
 read nginx7
 if [ $nginx7 -eq 1 ]
 then
@@ -433,7 +433,7 @@ then
 	echo "Done backing-up.."
 fi
 
-echo "Do you want to backup folder /run/nginx.pid? (1 for yes)"
+echo "Do you want to backup folder /run/nginx.pid? (Choose 1 for YES and 2 for NO)"
 read nginx8
 if [ $nginx8 -eq 1 ]
 then
@@ -443,7 +443,7 @@ then
 fi
 
 
-echo "Do you want to backup folder /var/run/nginx.pid? (1 for yes)"
+echo "Do you want to backup folder /var/run/nginx.pid? (Choose 1 for YES and 2 for NO)"
 read nginx9
 if [ $nginx9 -eq 1 ]
 then
@@ -481,7 +481,7 @@ fi
 
 echo -e "${GREEN}Remote Backup Complete\e[0m"
 
-cleanlocaltempbackup
+
 #END
 
 cleanlocaltempbackup() {
@@ -489,3 +489,5 @@ cleanlocaltempbackup() {
 	rm server.txt
   echo -e "${GREEN}Local Backup Has Been Removed\e[0m"
 }
+
+cleanlocaltempbackup
