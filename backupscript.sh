@@ -487,6 +487,7 @@ echo -e "${GREEN}Remote Backup Complete\e[0m"
 cleanlocaltempbackup() {
   rm -r $DIR
 	rm server.txt
+	rm $FILE
   echo -e "${GREEN}Local Backup Has Been Removed\e[0m"
 }
 
