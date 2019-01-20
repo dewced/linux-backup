@@ -5,51 +5,102 @@
 # Script by: Cedric De Witte - Kwinten Braet - Sam Strobbe
 # Support: info@cedricdewitte.be - info@kwintenbraet.be - sam.strobbe0309@hotmail.com
 
+
+
+# WHAT IS IT?
+# -----------
+# This is a backup script for Linux that can back up an entire webserver and uploads the back-up to a FTP server.
+#
+# FEATURES
+# --------
+#
+#  - Apache or Nginx webserver back-up script
+#  - Made for Debian, Ubuntu & CentOS
+#  - Make a full back-up of the webserver of choose which folders.
+
 ########################################
-# Please fill in your relevant details #
+### BEGIN CONFIGURATION ###
 ########################################
 
-# FTP Credentials
+### FTP Config ###
+#
+#
+# The Username of your FTP Server.
+#
 USERNAME="Your username"
+#
+#
+# The password of your FTP Server.
+#
 PASSWORD="Your password"
+#
+#
+# The ip or hostname of your FTP Server.
+#
 SERVER="Your IP or hostname"
+#
+#
+# The port your FTP server is using.
+#
 PORT="21"
-
-#Please do comment out the folders which you like to backup:
-
-#WEB FOLDERS
-#"/var/www"
-
-#TODO: DIR is dus het mapje dat je naar de remote server kan duwen. Als we dus iets maken dat ofwel per gekozen mapje, iedere keer onderstaand script triggert.
-#kunnen we de opslag nodig minimaliseren. Wat is de workflow dus?
-#1. Loop elke map dat gebackupt moet worden 1 voor 1 af. Dus we starten MAP 1
-#2. ZIPPEN dit en zetten het in DIR
-#3. Trigger SFTP en upload.
-#4. Maak DIR map leeg (doet hij dus al)
-#5. Herhaal stappen met volgende map die je moet backuppen
-
-# Where do I need to backup? (TODO: Extend to multiple folders, allow to choose)
-DIR="/root/backup"
-mkdir $DIR
-echo "Your temporary backupdirectory has been created!"
-
-#Remote directory where the backup will be stored
-REMOTEDIR="./"
-
-
-#Filename of backup file to be transfered // DO NOT ADD EXTENSION
-FILE="BACKUP_NAME"
-
-#Which protocol do you prefer?
-#1=FTP
-#2=SFTP (requires apt-get install sshpass)
+#
+#
+# Which protocol do you prefer?
+# 1=FTP
+# 2=SFTP (requires apt-get install sshpass)
+#
 TYPE=1
+#
+#
+# Remote FTP directory where the backup will be stored.
+#
+REMOTEDIR="./"
+#
+#
+
+### Backup Config ###
+#
+#
+# Where do you want need to place your backup locally?
+#
+DIR="/root/backup"
+#
+#
+# Filename of backup file to be transfered // DO NOT ADD EXTENSION
+FILE="BACKUP_NAME"
+#
+#
+######################################################################################
+### END CONFIGURATION ###
+######################################################################################
+
+
+
+
+function help {
+	echo "
+This is a backup script for Linux that can back up an entire webserver and uploads the back-up to a FTP server. You can choose to do a full back-up at once or choose the different folders.
+*** If you get an Not Connected error. That means that the FTP Credentials you entered are wrong. ***"
+}
+
+if [ "${1}" == "--help" ]; then
+	help
+fi
+
+
+
+
+# Create temporary directory
+mkdir $DIR 2> /dev/null
+echo "Your temporary backupdirectory has been created!"
 
 echo "Checking hostsystem..."
 
 RED='\033[0;31m'
 GREEN='\e[32m'
 
+
+# Check the webserver being used
 check_webapp() {
 
 curl -I localhost > server.txt 2> /dev/null
@@ -66,6 +117,7 @@ else
 fi
 }
 
+# Check the OS being used
 check_os_apache() {
 cat /proc/version >> server.txt 2> /dev/null
 cat /etc/redhat-release >> server.txt 2> /dev/null
@@ -89,7 +141,7 @@ fi
 
 }
 
-
+# Ask full back-up or choose folder.
 apache_folders_debian() {
 
 echo "Do you want to do a complete back-up (1) or choose what you want to back-up (2)?"
@@ -178,7 +230,7 @@ echo "Do you want to do a complete back-up (1) or choose what you want to back-u
 read ubuntu1
 if [ $ubuntu1 -eq 1 ]
 then
-    echo Backing up every folder...;
+    echo "Backing up every folder...";
 	cp -r /var/www $tDIR;
 	cp -r /etc/httpd $DIR;
 	cp -r /var/lib/mysql $DIR;
@@ -252,7 +304,7 @@ if [ $ubuntu7 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /var/run/httpd $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 }
@@ -263,7 +315,7 @@ echo "Do you want to do a complete back-up (1) or choose what you want to back-u
 read centos1
 if [ $centos1 -eq 1 ]
 then
-    echo Backing up every folder...;
+    echo "Backing up every folder...";
 	cp -r /etc/httpd/conf.d $DIR;
 	cp -r /var/www $DIR;
 	cp -r /etc/httpd/conf $DIR;
@@ -290,7 +342,7 @@ if [ $centos2 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /etc/httpd/conf.d $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -300,7 +352,7 @@ if [ $centos3 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /var/www/ $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -311,7 +363,7 @@ if [ $centos4 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /etc/httpd/conf $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
@@ -320,7 +372,7 @@ if [ $centos5 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /etc/ssl/certs $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -331,7 +383,7 @@ if [ $centos6 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /run/httpd $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -342,7 +394,7 @@ if [ $centos7 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /var/run/httpd $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 }
 
@@ -355,7 +407,7 @@ echo "Do you want to do a complete back-up (1) or choose what you want to back-u
 read nginx1
 if [ $nginx1 -eq 1 ]
 then
-    echo Backing up every folder...;
+    echo "Backing up every folder...";
 	cp -r /usr/share/nginx $DIR;
 	cp -r /etc/nginx $DIR;
 	cp -r /usr/local/nginx/conf $DIR;
@@ -384,7 +436,7 @@ if [ $nginx2 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /usr/share/nginx $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /etc/nginx? (Choose 1 for YES and 2 for NO)"
@@ -393,7 +445,7 @@ if [ $nginx3 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /etc/nginx $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -403,7 +455,7 @@ if [ $nginx4 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /usr/local/nginx/conf $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /usr/local/etc/nginx? (Choose 1 for YES and 2 for NO)"
@@ -412,7 +464,7 @@ if [ $nginx5 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /usr/local/etc/nginx $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /var/lib/mysql? (Choose 1 for YES and 2 for NO)"
@@ -421,7 +473,7 @@ if [ $nginx6 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /var/lib/mysql $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /etc/ssl/certs? (Choose 1 for YES and 2 for NO)"
@@ -430,7 +482,7 @@ if [ $nginx7 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /etc/ssl/certs $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 echo "Do you want to backup folder /run/nginx.pid? (Choose 1 for YES and 2 for NO)"
@@ -439,7 +491,7 @@ if [ $nginx8 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /run/nginx.pid $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 
 
@@ -449,7 +501,7 @@ if [ $nginx9 -eq 1 ]
 then
   echo "Backing up folder..."
 	cp -r /var/run/nginx.pid $DIR;
-	echo "Done backing-up.."
+	echo "Done backing-up."
 fi
 }
 
@@ -492,3 +544,10 @@ cleanlocaltempbackup() {
 }
 
 cleanlocaltempbackup
+
+
+
+
+
+
+
