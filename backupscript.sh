@@ -231,7 +231,7 @@ read ubuntu1
 if [ $ubuntu1 -eq 1 ]
 then
     echo "Backing up every folder...";
-	cp -r /var/www $tDIR;
+	cp -r /var/www $DIR;
 	cp -r /etc/httpd $DIR;
 	cp -r /var/lib/mysql $DIR;
 	cp -r /etc/ssl/certs $DIR;
